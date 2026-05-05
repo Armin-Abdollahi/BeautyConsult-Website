@@ -1,0 +1,296 @@
+/* ساختار کلی */
+.navbar {
+  width: 100%;
+  height: 75px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f0eaea;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+/* لوگو */
+.navbar__logo a {
+  font-size: 24px;
+  color: #2d2626;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* سرچ بار */
+.navbar__search {
+  flex: 1;
+  display: flex;
+  max-width: 350px;
+  margin: 0 20px;
+  background: #f8f6f6;
+  border-radius: 30px;
+  padding: 4px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.navbar__search:focus-within {
+  border-color: #d48b8b;
+  background: #ffffff;
+}
+
+.navbar__search input {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: #4a4242;
+}
+
+.navbar__search button {
+  padding: 8px 20px;
+  border: none;
+  background: #d48b8b;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar__search button:hover {
+  background: #b57373;
+}
+
+/* لینک‌ها (دسکتاپ) */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar__links a,
+.dropdown__title {
+  text-decoration: none;
+  color: #4a4242;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.navbar__links a:hover,
+.dropdown__title:hover {
+  color: #d48b8b;
+}
+
+/* منوی دسته‌بندی */
+.navbar__dropdown {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.dropdown__menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #ffffff;
+  border: 1px solid #f0eaea;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 220px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown__menu a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #4a4242;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dropdown__menu a:hover {
+  background: #fcf8f8;
+  color: #d48b8b;
+  transform: translateX(-5px); /* حرکت ملایم در هاور */
+}
+
+.dropdown__divider {
+  height: 1px;
+  background: #f0eaea;
+  margin: 6px 0;
+}
+
+.highlight-link {
+  color: #d48b8b !important;
+  font-weight: 700 !important;
+}
+
+/* بخش اکشن‌ها (ورود، سبد خرید، همبرگر) */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-btn {
+  color: #d48b8b !important;
+  font-weight: 600;
+  border: 1px solid #d48b8b;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  background: #d48b8b;
+  color: white !important;
+}
+
+.cart-btn {
+  font-size: 20px;
+  color: #4a4242;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar__hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #2d2626;
+  user-select: none;
+}
+
+/* ================= موبایل ================= */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+}
+
+.navbar__mobile-menu {
+  position: fixed;
+  right: 0;
+  top: 75px;
+  width: 280px;
+  height: calc(100vh - 75px);
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.navbar__mobile-menu a {
+  text-decoration: none;
+  color: #4a4242;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar__mobile-menu details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #4a4242;
+  font-size: 16px;
+  margin-bottom: 12px;
+  list-style: none;
+}
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 16px;
+  border-right: 2px solid #f0eaea;
+  margin-right: 8px;
+}
+
+.mobile-submenu a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6d6161;
+}
+
+.mobile-menu-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.login-btn-mobile {
+  text-align: center;
+  background: #f8f6f6;
+  padding: 12px;
+  border-radius: 8px;
+  color: #d48b8b !important;
+}
+
+.cart-btn-mobile {
+  text-align: center;
+  background: #d48b8b;
+  color: white !important;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 900px) {
+  .navbar__search {
+    display: none;
+  }
+
+  .navbar__links {
+    display: none;
+  }
+  
+  .login-btn {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: block;
+  }
+}

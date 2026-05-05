@@ -1,0 +1,52 @@
+/* اضافه کردن فونت وزیرمتن از CDN */
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css');
+
+:root {
+  --primary-color: #d48b8b; /* رنگ اصلی رز/نود */
+  --primary-dark: #b87575;
+  --bg-color: #fcfcfc;
+  --text-main: #333333;
+  --text-muted: #666666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* استفاده از فونت مدرن فارسی به جای تاهوما */
+  font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+  direction: rtl;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* استایل‌دهی به اسکرول‌بار برای زیبایی بیشتر (اختیاری) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark); 
+}

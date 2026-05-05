@@ -1,0 +1,201 @@
+/* متغیرهای CSS برای مدیریت آسان‌تر استایل‌ها */
+:root {
+  --primary-color: #d63384; /* یک رنگ صورتی زیبا برای فروشگاه آرایشی */
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --border-color: #dee2e6;
+  --danger-color: #dc3545;
+  --spacing-md: 20px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: var(--spacing-md);
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif; /* پیشنهاد فونت خوانای فارسی */
+}
+
+.cart-title {
+  margin-bottom: 30px;
+  color: var(--text-color);
+  text-align: right;
+  font-size: 2rem;
+}
+
+.cart-container {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr; /* فضای بیشتر برای آیتم‌ها */
+  gap: 30px;
+}
+
+/* --- بخش آیتم‌های سبد خرید --- */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cart-item:hover {
+    transform: translateY(-4px);
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.cart-info {
+  flex: 1; /* باعث می‌شود این بخش تمام فضای باقی‌مانده را بگیرد */
+}
+
+.cart-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+.cart-info p {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: ltr; /* چینش دکمه‌ها چپ به راست باشد */
+}
+
+.cart-quantity button {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1; /* برای تراز عمودی بهتر */
+  transition: background-color 0.2s;
+}
+.cart-quantity button:hover {
+    background-color: #e2e6ea;
+}
+
+.cart-quantity span {
+  font-weight: 500;
+  min-width: 25px; /* برای جلوگیری از پرش در زمان تغییر عدد */
+  text-align: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.remove-btn:hover {
+  opacity: 0.7;
+}
+
+/* --- بخش خلاصه سفارش --- */
+.cart-summary {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  height: fit-content; /* برای چسبیدن به بالا */
+  position: sticky;
+  top: 20px;
+}
+
+.cart-summary h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.checkout-btn, .clear-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.checkout-btn {
+  background-color: var(--primary-color);
+  color: white;
+  margin-bottom: 10px;
+}
+.checkout-btn:hover {
+    opacity: 0.9;
+}
+
+.clear-btn {
+  background-color: transparent;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+.clear-btn:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+
+/* --- صفحه خالی --- */
+.cart-empty {
+  text-align: center;
+  padding: 80px 20px;
+  direction: rtl;
+}
+
+/* --- ریسپانسیو برای موبایل --- */
+@media (max-width: 768px) {
+  .cart-container {
+    grid-template-columns: 1fr; /* ستون‌ها زیر هم قرار می‌گیرند */
+  }
+
+  .cart-item {
+    flex-wrap: wrap; /* اجازه شکستن آیتم‌ها در چند خط */
+    position: relative;
+    padding-bottom: 50px; /* فضا برای دکمه حذف */
+  }
+
+  .remove-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+  }
+}

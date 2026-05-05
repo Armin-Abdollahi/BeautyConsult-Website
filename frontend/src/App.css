@@ -1,0 +1,40 @@
+/* متغیرهای رنگی پروژه */
+:root {
+  --primary-color: #d48b8b;
+  --primary-hover: #b56c6c;
+  --bg-nude: #f5f0ec;
+  --text-dark: #2d2626;
+  --text-muted: #777;
+  --border-color: #e5dada;
+}
+
+/* ریست پایه */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Vazirmatn', 'IRANSans', Tahoma, sans-serif; /* فونت استاندارد فارسی */
+}
+
+body {
+  background-color: #fafafa;
+  color: var(--text-dark);
+  direction: rtl; /* راست‌چین کردن کل سایت */
+}
+
+/* ساختار کلی برای نگه داشتن فوتر در پایین صفحه */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* باعث می‌شود محتوای اصلی کل فضای خالی را پر کند */
+}
+
+/* استایل عمومی لینک‌ها */
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,194 @@
+:root {
+  --primary-color: #d48b8b; /* رز لوکس */
+  --primary-hover: #b56c6c;
+  --bg-nude: #f5f0ec; /* سفید/خاکستری گرم */
+  --text-dark: #2d2626;
+  --text-muted: #666;
+  --border-color: #e5dada;
+}
+
+.contact-page {
+  direction: rtl;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* هدر */
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-header h1 {
+  font-size: 32px;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.contact-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* ساختار کلی */
+.contact-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* فرم */
+.contact-form {
+  flex: 1.2;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #fafafa;
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(212, 139, 139, 0.1);
+}
+
+.contact-form textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 139, 139, 0.3);
+}
+
+/* اطلاعات تماس */
+.contact-info {
+  flex: 0.8;
+  background: var(--bg-nude);
+  padding: 35px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.contact-info h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: var(--text-dark);
+  font-size: 22px;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-info h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  width: 50%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  font-size: 15px;
+}
+
+.info-icon {
+  color: var(--primary-color);
+  font-size: 20px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* شبکه‌های اجتماعی */
+.social-links {
+  margin-top: 35px;
+  display: flex;
+  gap: 15px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border-color);
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  color: var(--primary-color);
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.social-links a:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ریسپانسیو */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  .contact-form, .contact-info {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

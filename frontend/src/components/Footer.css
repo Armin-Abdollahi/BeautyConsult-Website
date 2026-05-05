@@ -1,0 +1,150 @@
+.footer {
+  /* استفاده از رنگ تیره اما گرم به جای مشکی خالص */
+  background-color: #2d2626; 
+  color: #d1c7c7;
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+  margin-top: 80px;
+  border-top: 4px solid #d48b8b; /* نوار باریک با رنگ اصلی سایت */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 24px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr; /* ستون اول کمی عریض‌تر */
+  gap: 40px;
+}
+
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* خط تزیینی زیر تیترها */
+.footer-col h4::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #d48b8b;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #a89c9c;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 12px;
+}
+
+.footer-col a {
+  color: #a89c9c;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* افکت هاور جذاب برای لینک‌ها */
+.footer-col a:hover {
+  color: #d48b8b;
+  transform: translateX(-5px); /* حرکت ملایم به سمت چپ (در RTL) */
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #a89c9c;
+}
+
+.contact-info .icon {
+  font-size: 16px;
+  filter: grayscale(100%) brightness(200%);
+  opacity: 0.7;
+}
+
+.socials {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 30px; /* طراحی کپسولی */
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  transform: none !important; /* جلوگیری از حرکت افقی */
+}
+
+.socials a:hover {
+  background: #d48b8b;
+  border-color: #d48b8b;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(212, 139, 139, 0.3);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 13px;
+  color: #8b8080;
+  background-color: #262020; /* کمی تیره‌تر از بدنه فوتر */
+}
+
+.footer-bottom span {
+  color: #d48b8b;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  
+  .footer-col h4::after {
+    width: 40px;
+  }
+}
