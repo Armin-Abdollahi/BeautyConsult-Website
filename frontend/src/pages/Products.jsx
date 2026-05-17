@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaInfoCircle } from "react-icons/fa";
-// مسیر کانتکست سبد خرید خود را در صورت نیاز اصلاح کنید
 import { useCart } from "../context/CartContext"; 
-import { getProducts } from "../services/api";
 import "./Products.css";
 
 function Products() {
@@ -13,7 +11,7 @@ function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const { addToCart } = useCart(); // هوک سبد خرید
+  const { addToCart } = useCart();
 
   const categories = ["همه", "پوست", "مو", "آرایشی"];
 
@@ -22,15 +20,18 @@ function Products() {
       try {
         setLoading(true);
         setError("");
-        const res = await getProducts();
-        if (res.ok) {
-          setProducts(res.data);
+        // ارتباط مستقیم با API بک‌اند PHP شما
+        const response = await fetch('http://localhost/skin-care-project/beauty-api/get_products.php');
+        
+        if (response.ok) {
+          const data = await response.json();
+          setProducts(data);
         } else {
           setError("دریافت محصولات با مشکل مواجه شد.");
         }
       } catch (err) {
         console.error("Products fetch error:", err);
-        setError("خطایی در دریافت اطلاعات رخ داد.");
+        setError("خطایی در ارتباط با سرور رخ داد. لطفا از روشن بودن XAMPP مطمئن شوید.");
       } finally {
         setLoading(false);
       }
@@ -42,7 +43,7 @@ function Products() {
     return products.filter((product) => {
       const matchesCategory =
         selectedCat === "همه" ? true : product.category === selectedCat;
-      const matchesPrice = product.price <= maxPrice;
+      const matchesPrice = Number(product.price) <= maxPrice;
       return matchesCategory && matchesPrice;
     });
   }, [products, selectedCat, maxPrice]);
@@ -121,18 +122,19 @@ function Products() {
                 <p>محصولی با فیلترهای انتخاب‌شده یافت نشد.</p>
               </div>
             ) : (
-              filteredProducts.map((product) => {
-                const finalPrice =
-                  product.off > 0
-                    ? product.price - (product.price * product.off) / 100
-                    : product.price;
+              filteredProducts.map((product, index) => {
+                // اگر فیلد تخفیف در دیتابیس ندارید، مقدار پیش‌فرض صفر در نظر می‌گیریم
+                const discount = product.off || 0; 
+                const price = Number(product.price);
+                const finalPrice = discount > 0 ? price - (price * discount) / 100 : price;
 
                 return (
-                  <div className="product-card" key={product.id}>
+                  <div className="product-card" key={product.id || index}>
                     <Link
                       to={`/product/${product.id}`}
                       className="product-image-link"
                     >
+                      {/* اینجا img را به image تغییر دادیم تا با دیتابیس مچ شود */}
                       <img src={product.img} alt={product.title} />
                     </Link>
 
@@ -147,33 +149,36 @@ function Products() {
                       </Link>
 
                       <div className="price-box">
-                        {product.off > 0 ? (
+                        {discount > 0 ? (
                           <>
                             <span className="new-price">
                               {Math.round(finalPrice).toLocaleString()} تومان
                             </span>
                             <span className="old-price">
-                              {product.price.toLocaleString()} تومان
+                              {price.toLocaleString()} تومان
                             </span>
                             <span className="off-badge">
-                              {product.off}% تخفیف
+                              {discount}% تخفیف
                             </span>
                           </>
                         ) : (
                           <span className="new-price">
-                            {product.price.toLocaleString()} تومان
+                            {price.toLocaleString()} تومان
                           </span>
                         )}
                       </div>
 
                       <div className="product-actions">
-                        {/* اتصال به کانتکست سبد خرید */}
                         <button 
                           className="add-btn"
-                          onClick={() => addToCart(product)}
+                          onClick={() => {
+                            addToCart(product);
+                            alert('به سبد خرید اضافه شد!');
+                          }}
                         >
                           <FaShoppingCart size={14} /> خرید
                         </button>
+
 
                         <Link
                           to={`/product/${product.id}`}

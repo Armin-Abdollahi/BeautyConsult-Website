@@ -1,20 +1,21 @@
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 
-// کامپوننت هر آیتم در سبد خرید
 function CartItem({ item }) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
 
-  const finalPrice = item.discount
-    ? item.price - (item.price * item.discount) / 100
+  // اصلاح discount به off
+  const finalPrice = item.off
+    ? item.price - (item.price * item.off) / 100
     : item.price;
 
   return (
     <div className="cart-item">
-      <img src={item.image} alt={item.name} />
+      {/* اصلاح image به img و name به title */}
+      <img src={item.img} alt={item.title} />
 
       <div className="cart-info">
-        <h3>{item.name}</h3>
+        <h3>{item.title}</h3>
         <p>{finalPrice.toLocaleString()} تومان</p>
       </div>
 
